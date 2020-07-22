@@ -1,0 +1,48 @@
+@import "./macros.scss";
+
+.tab {
+  display: grid;
+  grid-template-columns: 8px repeat(10, 1fr) 16px;
+  grid-template-rows: 6px repeat(3, auto) 6px;
+  align-items: center;
+  background-color: $background-gray;
+  border-left: solid 1px $border-gray;
+  cursor: pointer;
+  &.active {
+    background-color: white;
+    border-color: $dashbird-blue;
+    .tab-chart {
+      display: none;
+    }
+    .value {
+      font-size: 32px;
+      line-height: 40px;
+      @include grid-position(3, 2, 2, 6);
+    }
+  }
+  .title {
+    font-size: 12px;
+    text-transform: uppercase;
+    text-align: left;
+    color: $text-gray;
+    font-weight: 600;
+    @include grid-position(2, 1, 2, 8);
+  }
+  .anticon {
+    font-size: 20px;
+    @include grid-position(2, 1, 10, 2);
+    color: $dashbird-blue;
+  }
+  .value {
+    color: black;
+    font-size: 24px;
+    line-height: 28px;
+    justify-self: start;
+    @include grid-position(3, 1, 2, 6);
+  }
+  .tab-chart {
+    height: 16px;
+    border-bottom: solid 1px $border-gray;
+    @include grid-position(4, 1, 2, 9);
+  }
+}

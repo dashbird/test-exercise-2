@@ -1,0 +1,13 @@
+$dashbird-blue: #4a45c6;
+$background-gray: #f5f5f5;
+$border-gray: #dcdcdc;
+$text-gray: #9a9a9a;
+
+@mixin grid-position($row, $rowspan, $column, $columnspan) {
+  grid-row: $row/ span $rowspan;
+  grid-column: $column / span $columnspan;
+  -ms-grid-column: $column;
+  -ms-grid-column-span: $columnspan;
+  -ms-grid-row: $row;
+  -ms-grid-row-span: $rowspan;
+}

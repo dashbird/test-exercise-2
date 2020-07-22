@@ -1,0 +1,13 @@
+@import './macros.scss';
+
+.app {
+  background-color: $background-gray;
+  min-height: 100vh;
+  padding: 64px;
+  .heading {
+    color: black;
+    margin-bottom: 16px;
+    font-size: 28px;
+    line-height: 40px;
+  }
+}
