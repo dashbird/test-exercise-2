@@ -1,2 +1,2 @@
 # test-exercise-2
-Dashboard multiple tabs of data using chart
+Dashboard where displaying multiple tabs of data using charts/graphs
