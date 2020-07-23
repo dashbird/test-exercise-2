@@ -1,0 +1,28 @@
+@import "./macros.scss";
+
+.info-card {
+  display: flex;
+  padding: 12px;
+  background-color: white;
+  margin-bottom: 4px;
+  .anticon {
+    color: $dashbird-blue;
+    font-size: 24px;
+    margin-right: 12px;
+  }
+  .content {
+    padding-left: 16px;
+    border-left: solid 1px $border-gray;
+    .info {
+      color: black;
+      display: flex;
+      justify-content: space-between;
+      span {
+        color: $text-gray;
+      }
+    }
+    .description {
+      color: $text-gray;
+    }
+  }
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import '../css/app.scss';
 import Header from './header';
 import Chart from './chart';
+import Information from './information';
 
 const App: React.FC = () => {
   return (
@@ -11,6 +12,7 @@ const App: React.FC = () => {
       </div>
       <Header />
       <Chart />
+      <Information />
     </div>
   );
 }
