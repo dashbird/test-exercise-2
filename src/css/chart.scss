@@ -1,4 +1,10 @@
+@import "~react-vis/dist/style";
+
 .chart {
   height: 320px;
   background-color: white;
+  .recharts-tooltip-wrapper {
+    // Hide the automatic tooltip
+    display: none;
+  }
 }

@@ -10,9 +10,8 @@ export interface IInformation {
   [key: string]: IInfoCardProps[],
 }
 
-const Information: React.FC = (props) => {
+const Information: React.FC = () => {
   const information: IInformation = useSelector((state: IState) => state.information);
-  console.log(information);
 
   return (
     <div className="information">

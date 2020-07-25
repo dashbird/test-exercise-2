@@ -12,18 +12,19 @@ export enum Tabs {
 }
 
 const Header: React.FC = () => {
+  // TODO: pass down data?
   return (
     <div className="header">
-      <Tab title={Tabs.AVG_RESPONSE_DELAY} value="23ms" class={''}>
+      <Tab title={Tabs.AVG_RESPONSE_DELAY} value="23ms">
         <ClockCircleOutlined />
       </Tab>
-      <Tab title={Tabs.LAST_QUEUE_SIZE} value="32" class={'active'}>
+      <Tab title={Tabs.LAST_QUEUE_SIZE} value="32">
         <CloudServerOutlined />
       </Tab>
-      <Tab title={Tabs.AVG_PAYLOAD_SIZE} value="1.35kb" class={''}>
+      <Tab title={Tabs.AVG_PAYLOAD_SIZE} value="1.35kb">
         <HddOutlined />
       </Tab>
-      <Tab title={Tabs.DEAD_LETTER_QUEUE} value="0" class={''}>
+      <Tab title={Tabs.DEAD_LETTER_QUEUE} value="0">
         <FileExcelOutlined />
       </Tab>
     </div>

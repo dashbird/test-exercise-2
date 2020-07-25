@@ -2,5 +2,5 @@
   display: grid;
   grid-template-areas:
   "avg-rd last-qs avg-ps dead-lq";
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 1fr) 1fr;
 }

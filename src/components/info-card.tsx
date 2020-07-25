@@ -11,7 +11,7 @@ export interface IInfoCardProps {
 
 const InfoCard: React.FC<IInfoCardProps> = (props) => {
   return (
-    <div className="info-card">
+    <div className="info-card" key={props.info}>
       {props.children}
       <div className="content">
         <div className="info">
