@@ -4,7 +4,7 @@ import {
   ComposedChart, Area, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
   ResponsiveContainer, Cell,
 } from 'recharts';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { IState } from '../reducers/root-reducer';
 import Header from './header';
 import ChartHeader from './chart-header';

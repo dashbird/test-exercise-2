@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CalendarOutlined, ArrowRightOutlined, DownOutlined, BulbOutlined, WarningOutlined, EllipsisOutlined, CodeOutlined } from '@ant-design/icons'
+import { CalendarOutlined, ArrowRightOutlined, DownOutlined, BulbOutlined, WarningOutlined, CodeOutlined } from '@ant-design/icons'
 import TimePicker from './time-picker';
 import '../css/chart-header.scss';
 import { useSelector } from 'react-redux';

@@ -13,12 +13,12 @@ export function fetchData(type: Tabs | 'ALL', startDate: Date) {
   return (dispatch: any) => {
     // TODO: fetch data from API
     // TODO: set data avg
-    const data = {
-      'AVG. RESPONSE DELAY': dataGenerator(startDate, { start: 30, end: 450, precision: 1}),
-      'LAST QUEUE SIZE': dataGenerator(startDate, { start: 0, end: 8000, precision: 1}),
-      'AVG. PAYLOAD SIZE': dataGenerator(startDate, { start: 0, end: 10, precision: 100}),
-      'DEAD LETTER QUEUE': dataGenerator(startDate, { start: 0, end: 20, precision: 1}),
-    }
+    // const data = {
+    //   'AVG. RESPONSE DELAY': dataGenerator(startDate, { start: 30, end: 450, precision: 1}),
+    //   'LAST QUEUE SIZE': dataGenerator(startDate, { start: 0, end: 8000, precision: 1}),
+    //   'AVG. PAYLOAD SIZE': dataGenerator(startDate, { start: 0, end: 10, precision: 100}),
+    //   'DEAD LETTER QUEUE': dataGenerator(startDate, { start: 0, end: 20, precision: 1}),
+    // }
 
     // dispatch(setData(data));
 
