@@ -3,7 +3,8 @@ import { ClockCircleOutlined, CloudServerOutlined, HddOutlined, FileExcelOutline
 import '../css/header.scss';
 import Tab from './tab';
 
-// TODO: Naming
+// TODO: component naming
+// TODO: Naming 
 export enum Tabs {
   AVG_RESPONSE_DELAY = 'AVG. RESPONSE DELAY',
   LAST_QUEUE_SIZE = 'LAST QUEUE SIZE',
@@ -11,20 +12,20 @@ export enum Tabs {
   DEAD_LETTER_QUEUE = 'DEAD LETTER QUEUE',
 }
 
-const Header: React.FC = () => {
+const Header: React.FC<any> = (props) => {
   // TODO: pass down data?
   return (
     <div className="header">
-      <Tab title={Tabs.AVG_RESPONSE_DELAY} value="23ms">
+      <Tab title={Tabs.AVG_RESPONSE_DELAY} activeValue={props.activeValue} extension="ms" value="23ms">
         <ClockCircleOutlined />
       </Tab>
-      <Tab title={Tabs.LAST_QUEUE_SIZE} value="32">
+      <Tab title={Tabs.LAST_QUEUE_SIZE} activeValue={props.activeValue} value="32">
         <CloudServerOutlined />
       </Tab>
-      <Tab title={Tabs.AVG_PAYLOAD_SIZE} value="1.35kb">
+      <Tab title={Tabs.AVG_PAYLOAD_SIZE} activeValue={props.activeValue} extension="kb" value="1.35kb">
         <HddOutlined />
       </Tab>
-      <Tab title={Tabs.DEAD_LETTER_QUEUE} value="0">
+      <Tab title={Tabs.DEAD_LETTER_QUEUE} activeValue={props.activeValue} value="0">
         <FileExcelOutlined />
       </Tab>
     </div>

@@ -16,6 +16,9 @@ export interface IState {
   activeChart: Tabs;
   activeValue?: number;
   activeData: any;
+  average: {
+    [key: string]: string;
+  }
   information: IInformation;
   data: IData;
 }
@@ -52,14 +55,13 @@ export const INITIAL_STATE: IState = {
     ]
   },
   data: {},
+  average: {}
 };
 
 // TODO: types
 export default function rootReducer(state = INITIAL_STATE, action: any): IState {
   switch (action.type) {
     case SET_ACTIVE_CHART:
-      // Mark the state as "loading" so we can show a spinner or something
-      // Also, reset any errors. We're starting fresh.
       return {
         ...state,
         activeData: state.data[action.payload.activeChart],
@@ -67,17 +69,15 @@ export default function rootReducer(state = INITIAL_STATE, action: any): IState 
       };
 
     case SET_ACTIVE_VALUE:
-      // Mark the state as "loading" so we can show a spinner or something
-      // Also, reset any errors. We're starting fresh.
       return {
         ...state,
         activeValue: action.payload.activeValue
       };
 
     case SET_DATA:
-      // Mark the state as "loading" so we can show a spinner or something
-      // Also, reset any errors. We're starting fresh.
       // TODO: set avg value
+      console.log('act', action.payload.data[state.activeChart]);
+      console.log(action.payload.data)
       return {
         ...state,
         activeData: action.payload.data[state.activeChart],

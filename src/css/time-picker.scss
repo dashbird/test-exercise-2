@@ -1,0 +1,38 @@
+@import "./macros.scss";
+
+.time-picker {
+  background-color: white;
+  width: max-content;
+  padding: 16px 32px;
+  border-bottom: solid 1px $border-gray;
+  border-left: solid 1px $border-gray;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 5;
+  h4 {
+    padding-left: 7px;
+    padding-top: 16px;
+  }
+  .select {
+    padding-left: 7px;
+    display: flex;
+    align-items: center;
+    button {
+      margin-left: auto;
+    }
+  }
+  .common {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    button {
+      text-align: left;
+    }
+  }
+  .recent {
+    display: grid;
+    button {
+      text-align: left;
+    }
+  }
+}

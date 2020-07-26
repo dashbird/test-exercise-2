@@ -9,11 +9,12 @@ import { ResponsiveContainer, Line, LineChart } from 'recharts';
 interface ITabProps {
   title: Tabs;
   value: string;
+  activeValue?: string
+  extension?: string
 }
 
 const Tab: React.FC<ITabProps> = (props) => {
   const isActive = useSelector((state: IState) => state.activeChart === props.title);
-  const activeValue = useSelector((state: IState) => state.activeValue);
 
   // maybe pass it down using props
   const data = useSelector((state: IState) => state.data[props.title]);
@@ -24,9 +25,8 @@ const Tab: React.FC<ITabProps> = (props) => {
     <div className={className} onClick={() => dispatch(setActiveChart(props.title))}>
       <div className="title">{props.title}</div>
       {props.children}
-      {/* TODO: correct value unit (ms, kb) */}
-      {isActive && activeValue ?
-        <div className="value">{activeValue}</div> :
+      {isActive && props.activeValue ?
+        <div className="value">{props.activeValue}{props.extension}</div> :
         <div className="value">{props.value}</div>
       }
       <div className="tab-chart">

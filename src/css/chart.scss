@@ -1,10 +1,18 @@
-@import "~react-vis/dist/style";
-
 .chart {
-  height: 320px;
   background-color: white;
-  .recharts-tooltip-wrapper {
+  user-select: none;
+  margin-top: -16px;
+  // TODO: check if I can disable these things in chart options
+  .recharts-tooltip-wrapper,
+  .recharts-tooltip-cursor,
+  .recharts-active-dot {
     // Hide the automatic tooltip
     display: none;
+  }
+  &.dragging {
+    .recharts-tooltip-cursor,
+    .recharts-active-dot {
+      display: inline;
+    }
   }
 }

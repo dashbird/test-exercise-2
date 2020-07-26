@@ -1,23 +1,19 @@
 import { addHours } from 'date-fns/esm';
 import { format } from 'date-fns';
 
-interface fakeData {
-  x: string | Date;
-  y: number;
-}
-export function dataGenerator(startDate: Date) {
+// TODO: typings (what is returned)
+export function dataGenerator(startDate: Date, range: { start: number, end: number, precision: number }) {
   const completeData: any[] = [];
-  for (let index = 0; index < 60; index++) {
+  for (let index = 0; index < 150; index++) {
     completeData.push({
       name: format(addHours(startDate, index * 2), 'HH:mm'),
-      y: randomValueGenerator(0, 8000),
-      x: randomValueGenerator(-400, 700),
+      y: randomValueGenerator(range.start, range.end, range.precision),
+      x: randomValueGenerator(Math.abs(range.end / 10) * -1, range.end / 10, range.precision),
     });
   }
-
   return completeData;
 }
 
-function randomValueGenerator(min: number, max: number) {
-  return Math.floor((Math.random() * max) + min);
+function randomValueGenerator(min: number, max: number, precision: number) {
+  return Math.floor(Math.random() * (max * precision - min * precision) + min * precision) / (1*precision);
 }

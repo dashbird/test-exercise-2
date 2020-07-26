@@ -10,6 +10,8 @@
     text-align: left;
     color: $text-gray;
     font-weight: 600;
+    display: flex;
+    justify-content: space-between;
   }
   div.info-column {
     flex: 1 0 30%;
