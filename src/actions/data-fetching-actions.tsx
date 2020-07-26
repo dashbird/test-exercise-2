@@ -25,7 +25,7 @@ export function fetchData(type: Tabs | 'ALL', startDate: Date) {
 
     // TODO: FETCH API
     console.log(`${process.env.REACT_APP_API_URL}?start_at=2018-01-01&end_at=2018-09-01`)
-    return fetch('http://api.exchangeratesapi.io/history?start_at=2018-01-01&end_at=2018-09-01', {
+    return fetch('https://api.exchangeratesapi.io/history?start_at=2018-01-01&end_at=2018-09-01', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -36,8 +36,8 @@ export function fetchData(type: Tabs | 'ALL', startDate: Date) {
       .then(handleErrors)
       .then(res => res.json())
       .then(json => {
-        console.log(json);
-            dispatch(setData(json.data));
+        console.log(json.rates);
+            dispatch(setData(json.rates));
 
         // return json.holidays;
       })
