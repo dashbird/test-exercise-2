@@ -1,5 +1,5 @@
 import { Tabs } from '../components/header';
-import { dataGenerator } from '../helpers';
+// import { dataGenerator } from '../helpers';
 
 export const SET_DATA = 'SET_DATA';
 
