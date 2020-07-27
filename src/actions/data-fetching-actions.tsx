@@ -2,22 +2,21 @@ import { dataAvg, convertData } from '../helpers';
 
 export const SET_DATA = 'SET_DATA';
 
-// TODO: typings
 export const setData = (data: any, avgData: any) => ({
   type: SET_DATA,
   payload: { data, avgData }
 })
 
 
-
+// I fetched some NBA player stats for mock data
+// Converted data to be more in align with the needed data
 export function fetchData() {
   console.log('Fetching data');
   return (dispatch: any) => {
     let ids = [];
-    for (let index = 0; index < 200; index++) {
+    for (let index = 0; index < 100; index++) {
       ids.push(index);
     }
-    // Fetch NBA player stats as mock data.
     return fetch(`${process.env.REACT_APP_API_URL}${ids.join(',')}`, {
       method: 'GET',
       headers: {
@@ -28,7 +27,6 @@ export function fetchData() {
       .then(res => res.json())
       .then(json => {
         const convertedData = convertData(json.data);
-        console.log('conv', convertedData);
         dispatch(setData(convertedData, dataAvg(convertedData)));
         return json.data;
       })

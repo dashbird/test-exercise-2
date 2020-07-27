@@ -8,35 +8,7 @@ import { useSelector } from 'react-redux';
 import { IState } from '../reducers/root-reducer';
 import Tabs from './tabs';
 import ChartHeader from './chart-header';
-
-function median(values: any) {
-  if (values.length === 0) return 0;
-
-  values.sort(function (a: any, b: any) {
-    return a.y - b.y;
-  });
-
-  var half = Math.floor(values.length / 1.1);
-  if (values.length % 2) return values[half].y;
-
-  return (values[half - 1].y + values[half].y) / 2.0;
-}
-
-const gradientOffset = (data: any) => {
-  const medianValue = median([...data]);
-  const dataMax = Math.max(...data.map((i: any) => i.y));
-  const dataMin = Math.min(...data.map((i: any) => i.y)) - medianValue;
-
-  if (dataMax <= 0) {
-    return 0
-  }
-  else if (dataMin >= 0) {
-    return 1
-  }
-  else {
-    return dataMax / (dataMax - dataMin);
-  }
-}
+import { gradientOffset } from '../helpers';
 
 const Chart: React.FC = () => {
   const data = useSelector((state: IState) => state.activeData);
@@ -84,7 +56,6 @@ const Chart: React.FC = () => {
             <YAxis minTickGap={1000} interval={0} domain={['dataMin', 'dataMax']} orientation="left" stroke="#8884d8" />
             <Tooltip />
             <defs>
-              {/* TODO: linear gradient red and blue */}
               <linearGradient id="colorPx" x1="0" y1="0" x2="0" y2="1">
                 <stop offset={off} stopColor="#8884d8" stopOpacity={1} />
                 <stop offset={off} stopColor="#6F6F6F" stopOpacity={1} />

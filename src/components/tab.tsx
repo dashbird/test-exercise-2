@@ -9,8 +9,8 @@ import { ResponsiveContainer, Line, LineChart } from 'recharts';
 interface ITabProps {
   title: TabEnum;
   value: string;
-  activeValue?: string
-  extension?: string
+  activeValue?: string;
+  extension?: string;
 }
 
 const Tab: React.FC<ITabProps> = (props) => {

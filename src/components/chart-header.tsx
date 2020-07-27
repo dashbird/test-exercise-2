@@ -16,7 +16,6 @@ const ChartHeader: React.FC = () => {
   return (
     <div className="chart-header">
       <div className="info">
-        {/* TODO: show value here as well? */}
         <span className="pending">Pending increased</span>
         <span className="pending">Pending resolved</span>
         <span className="extra"><WarningOutlined /> Alerts</span>

@@ -1,15 +1,16 @@
 import { SET_TIMEFRAME, setTimeframe, SET_ACTIVE_CHART, setActiveChart } from '../actions/chart-settings-actions';
 import { TabEnum } from '../components/tabs';
+import { Timeframes } from '../components/time-picker';
 
 describe('actions', () => {
   it('should create an action to set timeframe', () => {
     const expectedAction = {
       type: SET_TIMEFRAME,
       payload: {
-        timeframe: 'Today'
+        timeframe: Timeframes.TODAY
       }
     }
-    expect(setTimeframe('Today')).toEqual(expectedAction)
+    expect(setTimeframe(Timeframes.TODAY)).toEqual(expectedAction)
   })
 
   it('should create an action to set week start day', () => {

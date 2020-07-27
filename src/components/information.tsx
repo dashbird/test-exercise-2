@@ -3,10 +3,12 @@ import InfoCard, { IInfoCardProps } from './info-card';
 import { useSelector } from 'react-redux';
 import { IState } from '../reducers/root-reducer';
 
-import '../css/information.scss';
 import { BulbOutlined, WarningOutlined, CloudSyncOutlined } from '@ant-design/icons';
 import { Select } from 'antd';
+
+import '../css/information.scss';
 const { Option } = Select;
+
 export interface IInformation {
   [key: string]: IInfoCardProps[],
 }

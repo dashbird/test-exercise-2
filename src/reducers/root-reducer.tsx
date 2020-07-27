@@ -3,6 +3,7 @@ import { TabEnum } from '../components/tabs';
 import { IInformation } from '../components/information';
 import { SET_DATA } from '../actions/data-fetching-actions';
 import { generateNames } from '../helpers';
+import { Timeframes } from '../components/time-picker';
 
 export interface IData {
   [key: string]: {
@@ -21,7 +22,7 @@ export interface IState {
   }
   information: IInformation;
   data: any;
-  timeframe: string;
+  timeframe: Timeframes;
 }
 
 export const INITIAL_STATE: IState = {
@@ -56,10 +57,9 @@ export const INITIAL_STATE: IState = {
   },
   data: {},
   average: {},
-  timeframe: 'Last 24 hours'
+  timeframe: Timeframes.LAST_24_HOURS
 };
 
-// TODO: types
 export default function rootReducer(state = INITIAL_STATE, action: any): IState {
   let activeData;
   switch (action.type) {
