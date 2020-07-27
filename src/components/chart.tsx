@@ -51,7 +51,7 @@ const Chart: React.FC = () => {
             onMouseMove={onMouseMove}
             onMouseUp={onMouseUp}
           >
-            <CartesianGrid stroke="#f5f5f5" horizontal={false} vertical={false} />
+            <CartesianGrid stroke="#f5f5f5" horizontal={true} vertical={false} />
             <XAxis dataKey="name" tickSize={20} />
             <YAxis minTickGap={1000} interval={0} domain={['dataMin', 'dataMax']} orientation="left" stroke="#8884d8" />
             <Tooltip />
