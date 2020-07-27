@@ -36,7 +36,7 @@ function generateStartDates(timeframe: Timeframes) {
       break;
     case Timeframes.LAST_1_HOUR:
       startDate = addMinutes(new Date(), -60);
-      for (let index = 0; index < 30; index++) {
+      for (let index = 0; index < 60; index++) {
         startDates.push(format(addMinutes(startDate, index), 'HH:mm'))
       }
       break;
@@ -53,12 +53,14 @@ function generateStartDates(timeframe: Timeframes) {
         start: startDate,
         end: new Date()
       })
+      let hours = interval.hours || 24;
+      console.log(interval);
       if (interval.hours && interval.hours <= 12) {
-        for (let index = 0; index < 24; index++) {
+        for (let index = 0; index < hours * 2; index++) {
           startDates.push(format(addMinutes(startDate, index * 30), 'HH:mm'))
         }
       } else {
-        for (let index = 0; index < 24; index++) {
+        for (let index = 0; index < hours; index++) {
           startDates.push(format(addHours(startDate, index), 'HH:mm'))
         }
       }
