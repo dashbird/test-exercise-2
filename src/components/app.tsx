@@ -4,13 +4,12 @@ import Chart from './chart';
 import Information from './information';
 import { useDispatch } from 'react-redux';
 import { fetchData } from '../actions/data-fetching-actions';
-import { startOfHour } from 'date-fns';
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchData('ALL', startOfHour(new Date())));
+    dispatch(fetchData());
   }); // Do initial fetch on component mount
 
   return (

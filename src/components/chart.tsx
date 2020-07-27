@@ -6,7 +6,7 @@ import {
 } from 'recharts';
 import { useSelector } from 'react-redux';
 import { IState } from '../reducers/root-reducer';
-import Header from './header';
+import Tabs from './tabs';
 import ChartHeader from './chart-header';
 
 function median(values: any) {
@@ -54,7 +54,7 @@ const Chart: React.FC = () => {
     }
   };
 
-  const onMouseDown = (value: any) => {
+  const onMouseDown = () => {
     setDragging(true);
   }
 
@@ -66,7 +66,7 @@ const Chart: React.FC = () => {
   };
   return (
     <>
-      <Header activeValue={activeValue}></Header>
+      <Tabs activeValue={activeValue}></Tabs>
       <div className={'chart ' + (dragging ? 'dragging' : '')}>
         <ChartHeader />
         {data && <ResponsiveContainer height={240}>

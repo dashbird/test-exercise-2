@@ -1,13 +1,13 @@
 import React from 'react';
 import '../css/tab.scss';
-import { Tabs } from './header';
+import { TabEnum } from './tabs';
 import { useSelector, useDispatch } from 'react-redux';
 import { IState } from '../reducers/root-reducer';
 import { setActiveChart } from '../actions/chart-settings-actions';
 import { ResponsiveContainer, Line, LineChart } from 'recharts';
 
 interface ITabProps {
-  title: Tabs;
+  title: TabEnum;
   value: string;
   activeValue?: string
   extension?: string

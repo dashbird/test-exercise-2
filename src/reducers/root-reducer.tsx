@@ -1,31 +1,31 @@
 import { SET_ACTIVE_CHART, SET_TIMEFRAME } from '../actions/chart-settings-actions';
-import { Tabs } from '../components/header';
+import { TabEnum } from '../components/tabs';
 import { IInformation } from '../components/information';
-import { SET_DATA, generateNames } from '../actions/data-fetching-actions';
+import { SET_DATA } from '../actions/data-fetching-actions';
+import { generateNames } from '../helpers';
 
-interface IChart {
-  activeChart: Tabs;
-
-}
-
-interface IData {
-  [key: string]: any
+export interface IData {
+  [key: string]: {
+    name: string,
+    x: number,
+    y: number,
+  }[]
 }
 
 export interface IState {
-  activeChart: Tabs;
+  activeChart: TabEnum;
   activeValue?: number;
   activeData: any;
   average: {
     [key: string]: string;
   }
   information: IInformation;
-  data: IData;
+  data: any;
   timeframe: string;
 }
 
 export const INITIAL_STATE: IState = {
-  activeChart: Tabs.AVG_RESPONSE_DELAY,
+  activeChart: TabEnum.AVG_RESPONSE_DELAY,
   activeData: undefined,
   information: {
     resources: [

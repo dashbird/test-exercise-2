@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
-import { Select, Button } from 'antd';
+import React from 'react';
+import { Button } from 'antd';
 import '../css/time-picker.scss';
 import { useDispatch } from 'react-redux';
 import { setTimeframe } from '../actions/chart-settings-actions';
 
-const { Option } = Select;
-
 interface ITimePickerProps {
   closeDatePicker: any,
 }
+
 // TODO: check over ; 
 const TimePicker: React.FC<ITimePickerProps> = (props) => {
   const dispatch = useDispatch();
@@ -18,35 +17,9 @@ const TimePicker: React.FC<ITimePickerProps> = (props) => {
     props.closeDatePicker();
   }
 
-  const [customSelectNumber, setCustomSelectNumber] = useState(5);
-  const [customSelectTimeframe, setCustomSelectTimeframe] = useState('hours');
-
-  const setCustomTimeframe = () => {
-    setFrame(`Last ${customSelectNumber} ${customSelectTimeframe}`)
-    props.closeDatePicker();
-  }
   // TODO: time picker selections as enums
   return (
     <div className="time-picker">
-      <h4>QUICK SELECT</h4>
-      <div className="select">
-        LAST
-        <Select defaultValue={customSelectNumber} bordered={false} onChange={(value) => setCustomSelectNumber(value)}>
-          <Option value="5">5</Option>
-          <Option value="10">10</Option>
-          <Option value="15">15</Option>
-        </Select>
-        <Select defaultValue={customSelectTimeframe} bordered={false} onChange={(value) => setCustomSelectTimeframe(value)}>
-          <Option value="minutes">Minutes</Option>
-          <Option value="hours">Hours</Option>
-          <Option value="days">Days</Option>
-          <Option value="months">Months</Option>
-        </Select>
-        <Button size={'middle'} onClick={setCustomTimeframe}>
-          Apply
-        </Button>
-      </div>
-
       <h4>COMMONLY USED</h4>
       <div className="common">
         <Button type="text" size={'small'} onClick={() => setFrame('Today')}>
