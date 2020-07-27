@@ -87,52 +87,6 @@ export function generateNames(data: any, timeframe: Timeframes) {
   return newData;
 }
 
-export function convertData(players: any) {
-  const avgRD = [];
-  const lastQS = [];
-  const avgPS = [];
-  const deadLQ = [];
-
-  const startDate = addDays(new Date(), players.length);
-  for (let index = 0; index < players.length; index++) {
-    const prevPlayer = players[index - 1] ? players[index - 1] : players[players.length - 1];
-    const player = players[index];
-    const name = format(addDays(startDate, index), 'HH:mm');
-
-
-    avgRD.push({
-      y: Math.floor(player.pts * 10),
-      x: Math.floor(player.pts * 10) - Math.floor(prevPlayer.pts * 10),
-      name,
-    })
-
-    lastQS.push({
-      y: Math.floor(player.ast * 10),
-      x: Math.floor(player.ast * 10) - Math.floor(prevPlayer.ast * 10),
-      name,
-    })
-
-    avgPS.push({
-      y: player.fga,
-      x: player.fga - prevPlayer.fga,
-      name,
-    })
-
-    deadLQ.push({
-      y: Math.floor(player.dreb),
-      x: Math.floor(player.dreb) - Math.floor(prevPlayer.dreb),
-      name,
-    })
-  }
-
-  return {
-    'AVG. RESPONSE DELAY': avgRD,
-    'LAST QUEUE SIZE': lastQS,
-    'AVG. PAYLOAD SIZE': avgPS,
-    'DEAD LETTER QUEUE': deadLQ,
-  }
-}
-
 // Calculate averges for each dataset
 export function dataAvg(data: any) {
   const avgData: any = {};
@@ -176,4 +130,16 @@ export const gradientOffset = (data: any) => {
   else {
     return dataMax / (dataMax - dataMin);
   }
+}
+
+export function dataGenerator(startDate: Date, range: { start: number, end: number, precision: number }) {
+  const completeData: any[] = [];
+  for (let index = 0; index < 150; index++) {
+    completeData.push({
+      name: format(addHours(startDate, index * 2), 'HH:mm'),
+      y: randomValueGenerator(range.start, range.end, range.precision),
+      x: randomValueGenerator(Math.abs(range.end / 10) * -1, range.end / 10, range.precision),
+    });
+  }
+  return completeData;
 }

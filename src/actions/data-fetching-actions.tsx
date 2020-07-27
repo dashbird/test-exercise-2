@@ -1,4 +1,4 @@
-import { dataAvg, convertData } from '../helpers';
+import { dataAvg, dataGenerator } from '../helpers';
 
 export const SET_DATA = 'SET_DATA';
 
@@ -8,29 +8,18 @@ export const setData = (data: any, avgData: any) => ({
 })
 
 
-// I fetched some NBA player stats for mock data
-// Converted data to be more in align with the needed data
-export function fetchData() {
+export function fetchData(startDate: Date) {
   console.log('Fetching data');
   return (dispatch: any) => {
-    let ids = [];
-    for (let index = 0; index < 100; index++) {
-      ids.push(index);
+    // Used hardcoded mock data because couldn't find a good API endpoint to fetch this kind of data.
+    const data = {
+      'AVG. RESPONSE DELAY': dataGenerator(startDate, { start: 30, end: 450, precision: 1 }),
+      'LAST QUEUE SIZE': dataGenerator(startDate, { start: 0, end: 2000, precision: 1 }),
+      'AVG. PAYLOAD SIZE': dataGenerator(startDate, { start: 0, end: 10, precision: 100 }),
+      'DEAD LETTER QUEUE': dataGenerator(startDate, { start: 0, end: 20, precision: 1 }),
     }
-    return fetch(`${process.env.REACT_APP_API_URL}${ids.join(',')}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then(handleErrors)
-      .then(res => res.json())
-      .then(json => {
-        const convertedData = convertData(json.data);
-        dispatch(setData(convertedData, dataAvg(convertedData)));
-        return json.data;
-      })
-      .catch(error => console.error('Somethings is really wrong - ', error));
+
+    dispatch(setData(data, dataAvg(data)));
   };
 }
 
