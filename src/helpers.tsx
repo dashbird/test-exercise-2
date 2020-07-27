@@ -54,7 +54,6 @@ function generateStartDates(timeframe: Timeframes) {
         end: new Date()
       })
       let hours = interval.hours || 24;
-      console.log(interval);
       if (interval.hours && interval.hours <= 12) {
         for (let index = 0; index < hours * 2; index++) {
           startDates.push(format(addMinutes(startDate, index * 30), 'HH:mm'))
