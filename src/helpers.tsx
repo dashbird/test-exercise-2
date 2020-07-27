@@ -134,11 +134,11 @@ export const gradientOffset = (data: any) => {
 
 export function dataGenerator(startDate: Date, range: { start: number, end: number, precision: number }) {
   const completeData: any[] = [];
-  for (let index = 0; index < 150; index++) {
+  for (let index = 0; index < 90; index++) {
     completeData.push({
       name: format(addHours(startDate, index * 2), 'HH:mm'),
       y: randomValueGenerator(range.start, range.end, range.precision),
-      x: randomValueGenerator(Math.abs(range.end / 10) * -1, range.end / 10, range.precision),
+      x: randomValueGenerator(Math.abs(range.end / 2) * -1, range.end / 2, range.precision),
     });
   }
   return completeData;
