@@ -22,11 +22,3 @@ export function fetchData(startDate: Date) {
     dispatch(setData(data, dataAvg(data)));
   };
 }
-
-// Handle HTTP errors since fetch won't.
-function handleErrors(response: any) {
-  if (!response.ok) {
-    throw Error(response.statusText);
-  }
-  return response;
-}
