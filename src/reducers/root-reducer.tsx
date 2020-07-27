@@ -1,7 +1,7 @@
-import { SET_ACTIVE_CHART, SET_ACTIVE_VALUE } from '../actions/chart-settings-actions';
+import { SET_ACTIVE_CHART, SET_TIMEFRAME } from '../actions/chart-settings-actions';
 import { Tabs } from '../components/header';
 import { IInformation } from '../components/information';
-import { SET_DATA } from '../actions/data-fetching-actions';
+import { SET_DATA, generateNames } from '../actions/data-fetching-actions';
 
 interface IChart {
   activeChart: Tabs;
@@ -21,13 +21,13 @@ export interface IState {
   }
   information: IInformation;
   data: IData;
+  timeframe: string;
 }
 
 export const INITIAL_STATE: IState = {
   activeChart: Tabs.AVG_RESPONSE_DELAY,
   activeData: undefined,
   information: {
-    // TODO: fetch some random data here
     resources: [
       {
         info: 'usage-service-prod-record-inventory-usage',
@@ -55,33 +55,37 @@ export const INITIAL_STATE: IState = {
     ]
   },
   data: {},
-  average: {}
+  average: {},
+  timeframe: 'Last 24 hours'
 };
 
 // TODO: types
 export default function rootReducer(state = INITIAL_STATE, action: any): IState {
+  let activeData;
   switch (action.type) {
     case SET_ACTIVE_CHART:
+      activeData = generateNames(state.data[action.payload.activeChart], state.timeframe)
       return {
         ...state,
-        activeData: state.data[action.payload.activeChart],
+        activeData,
         activeChart: action.payload.activeChart
       };
 
-    case SET_ACTIVE_VALUE:
+    case SET_TIMEFRAME:
+      activeData = generateNames(state.data[state.activeChart], action.payload.timeframe)
       return {
         ...state,
-        activeValue: action.payload.activeValue
+        activeData,
+        timeframe: action.payload.timeframe
       };
 
     case SET_DATA:
-      // TODO: set avg value
-      console.log('act', action.payload.data[state.activeChart]);
-      console.log(action.payload.data)
+      activeData = generateNames(action.payload.data[state.activeChart], state.timeframe)
       return {
         ...state,
-        activeData: action.payload.data[state.activeChart],
-        data: action.payload.data
+        activeData,
+        data: action.payload.data,
+        average: action.payload.avgData,
       };
 
 

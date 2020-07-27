@@ -17,7 +17,7 @@ function median(values: any) {
   });
 
   var half = Math.floor(values.length / 1.1);
-  if (values.length % 2) return values[half];
+  if (values.length % 2) return values[half].y;
 
   return (values[half - 1].y + values[half].y) / 2.0;
 }
@@ -26,7 +26,6 @@ const gradientOffset = (data: any) => {
   const medianValue = median([...data]);
   const dataMax = Math.max(...data.map((i: any) => i.y));
   const dataMin = Math.min(...data.map((i: any) => i.y)) - medianValue;
-
 
   if (dataMax <= 0) {
     return 0
@@ -49,24 +48,19 @@ const Chart: React.FC = () => {
     off = gradientOffset(data);
   }
 
-  // TODO: rename funcs
-  /**
-   * Event handler for onNearestX.
-   * @param {Object} value Selected value.
-   * @param {index} index Index of the value in the data array.
-   * @private
-   */
-  const _onNearestX = (value: any) => {
+  const onMouseMove = (value: any) => {
     if (dragging && value && value.activePayload) {
-      // TODO: improve value updating
       setActiveValue(value.activePayload[0].payload.y)
     }
   };
 
+  const onMouseDown = (value: any) => {
+    setDragging(true);
+  }
+
   // TODO: format yaxis values
   // TODO: zoom chart
-  // TODO: rename functions
-  const _onNearestY = () => {
+  const onMouseUp = () => {
     setDragging(false);
     setActiveValue(undefined);
   };
@@ -75,15 +69,15 @@ const Chart: React.FC = () => {
       <Header activeValue={activeValue}></Header>
       <div className={'chart ' + (dragging ? 'dragging' : '')}>
         <ChartHeader />
-        {data && <ResponsiveContainer height={320}>
+        {data && <ResponsiveContainer height={240}>
           <ComposedChart
             data={data}
             margin={{
               top: 20, right: 20, bottom: 20, left: 0,
             }}
-            onMouseDown={() => setDragging(true)}
-            onMouseMove={_onNearestX}
-            onMouseUp={_onNearestY}
+            onMouseDown={onMouseDown}
+            onMouseMove={onMouseMove}
+            onMouseUp={onMouseUp}
           >
             <CartesianGrid stroke="#f5f5f5" horizontal={false} vertical={false} />
             <XAxis dataKey="name" tickSize={20} />
@@ -104,7 +98,6 @@ const Chart: React.FC = () => {
             <Bar dataKey="x" barSize={5} fill="#413ea0" >
               {
                 data.map((entry: any, index: any) => (
-                  // TODO: correct colours
                   <Cell key={`cell-${index}`} fill={entry.x > 0 ? "#d62728" : "#8884d8"} />
                 ))
               }

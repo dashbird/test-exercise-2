@@ -19,7 +19,6 @@ const Information: React.FC = () => {
       <div className="info-column">
         <div className="information-column-heading">
           Resources
-          {/* TODO: sorting buttons */}
           <Select defaultValue="execution-time" size="small" style={{ fontSize: '12px', lineHeight: '24px', color: '#9a9a9a', letterSpacing: '-0.3px', textTransform: 'capitalize' }} bordered={false}>
             <Option value="execution-time" style={{ fontSize: '12px', lineHeight: '24px', color: '#9a9a9a', letterSpacing: '-0.3px', backgroundColor: '#f5f5f5' }}>Execution Time</Option>
             <Option value="type" style={{ fontSize: '12px', lineHeight: '24px', color: '#9a9a9a', letterSpacing: '-0.3px', backgroundColor: '#f5f5f5' }}>Type</Option>
@@ -27,7 +26,7 @@ const Information: React.FC = () => {
           </Select>
         </div>
         {information.resources.map((resource) => (
-          <InfoCard info={resource.info} description={resource.description} time={resource.time}>
+          <InfoCard info={resource.info} description={resource.description} time={resource.time} key={resource.info}>
             <CloudSyncOutlined />
           </InfoCard>
         ))}
@@ -41,7 +40,7 @@ const Information: React.FC = () => {
           </Select>
         </div>
         {information.insights.map((insight) => (
-          <InfoCard info={insight.info} description={insight.description} time={insight.time}>
+          <InfoCard info={insight.info} description={insight.description} time={insight.time} key={insight.info}>
             <BulbOutlined />
           </InfoCard>
         ))}
@@ -55,7 +54,7 @@ const Information: React.FC = () => {
           </Select>
         </div>
         {information.alerts.map((alert) => (
-          <InfoCard info={alert.info} description={alert.description} time={alert.time}>
+          <InfoCard info={alert.info} description={alert.description} time={alert.time} key={alert.info}>
             <WarningOutlined />
           </InfoCard>
         ))}

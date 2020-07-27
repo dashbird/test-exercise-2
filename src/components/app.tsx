@@ -13,7 +13,6 @@ const App: React.FC = () => {
     dispatch(fetchData('ALL', startOfHour(new Date())));
   }); // Do initial fetch on component mount
 
-
   return (
     <div className="app">
       <div className="heading">
@@ -26,5 +25,3 @@ const App: React.FC = () => {
 }
 
 export default App;
-
-// TODO: clean up package.json

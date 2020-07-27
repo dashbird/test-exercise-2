@@ -27,7 +27,7 @@ const Tab: React.FC<ITabProps> = (props) => {
       {props.children}
       {isActive && props.activeValue ?
         <div className="value">{props.activeValue}{props.extension}</div> :
-        <div className="value">{props.value}</div>
+        <div className="value">{props.value}{props.extension}</div>
       }
       <div className="tab-chart">
         <ResponsiveContainer>
