@@ -3,6 +3,9 @@
 .information {
   display: flex;
   margin-top: 8px;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
   .information-column-heading {
     font-size: 12px;
     line-height: 24px;
@@ -17,6 +20,9 @@
     flex: 1 0 30%;
     &:nth-child(2) {
       margin: 0 8px;
+      @media (max-width: 768px) {
+        margin: 0;
+      }
     }
   }
 }

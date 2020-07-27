@@ -8,6 +8,9 @@
   background-color: $background-gray;
   border-left: solid 1px $border-gray;
   cursor: pointer;
+  @media (max-width: 768px) {
+    grid-template-rows: 16px repeat(3, auto) 16px;
+  }
   &.active {
     background-color: white;
     border-color: $dashbird-blue;

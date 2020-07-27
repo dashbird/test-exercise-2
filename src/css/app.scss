@@ -4,6 +4,9 @@
   background-color: $background-gray;
   min-height: 100vh;
   padding: 64px;
+  @media (max-width: 768px) {
+    padding: 32px;
+  }
   .heading {
     color: black;
     margin-bottom: 16px;

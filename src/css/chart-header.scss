@@ -2,7 +2,7 @@
 
 .chart-header {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: 16px repeat(10, 1fr) 16px;
   grid-template-rows: 16px auto 16px auto;
   justify-content: flex-end;
   position: relative;
@@ -10,8 +10,16 @@
   margin: 16px 0;
   border-bottom: solid 1px $border-gray;
   align-items: center;
+  @media (max-width: 768px) {
+    grid-template-rows: 16px auto 16px auto 16px auto;
+  }
   .info {
-    @include grid-position(2, 1, 1, 8);
+    display: flex;
+    flex-wrap: wrap;
+    @include grid-position(2, 1, 2, 7);
+    @media (max-width: 768px) {
+      @include grid-position(2, 1, 2, 11);
+    }
     span {
       font-size: 12px;
       color: $text-gray;
@@ -19,7 +27,6 @@
       cursor: pointer;
       &.pending {
         &:first-child {
-          margin-left: 16px;
           &::before {
             background-color: red;
           }
@@ -48,10 +55,13 @@
     display: flex;
     align-items: center;
     justify-self: end;
-    @include grid-position(2, 1, 9, 4);
+    @include grid-position(2, 1, 9, 3);
     color: $dashbird-blue;
-    margin-right: 16px;
     font-size: 12px;
+    @media (max-width: 768px) {
+      justify-self: start;
+      @include grid-position(4, 1, 2, 11);
+    }
     .date-picker {
       margin-left: 16px;
       .anticon-calendar {
@@ -62,5 +72,8 @@
   }
   .all-data {
     @include grid-position(4, 1, 1, 12);
+    @media (max-width: 768px) {
+      @include grid-position(6, 1, 1, 12);
+    }
   }
 }
